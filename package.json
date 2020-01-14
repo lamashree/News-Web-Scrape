@@ -1,0 +1,29 @@
+{
+  "name": "news-web-scrape",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lamashree/News-Web-Scrape.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lamashree/News-Web-Scrape/issues"
+  },
+  "homepage": "https://github.com/lamashree/News-Web-Scrape#readme",
+  "dependencies": {
+    "axios": "^0.19.1",
+    "cheerio": "^1.0.0-rc.3",
+    "express": "^4.17.1",
+    "handlebars": "^4.7.2",
+    "layout": "^2.2.0",
+    "model": "^6.0.1",
+    "mongoose": "^5.8.7",
+    "morgan": "^1.9.1"
+  }
+}
