@@ -28,8 +28,29 @@
       <div class="col md">
 
         <div id="articles"></div>
-        <div id="Comments"></div>
+        <div id="notes"></div>
       </div>
     </div>
   </div>
+</div>
+
+    <div class="col-md-4 text-left">
+        <div class="rightBurgers">
+          <h2 class="heading">Old Favorites</h2>
+          <ul>
+            {{#each Articles}}
+            <li>
+              <p class="burgerType">{{this.burger_name}}</p>
+              <form action="articles/delete/{{this.id}}?_method=DELETE" method="POST">
+                <button class="btnDevour" type="submit">Delete it</button>
+              </form>
+            </li>
+          
+            {{/each}}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
