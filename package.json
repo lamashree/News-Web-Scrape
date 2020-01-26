@@ -13,12 +13,6 @@
     "morgan": "^1.9.1"
   },
   
-    "engines": {
-      "node": "13.6.0",
-      "npm": "1.4.29"
-    },
-  
-  
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
