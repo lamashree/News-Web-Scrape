@@ -38,7 +38,11 @@ mongoose.connect(MONGODB_URI);
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");// Our scraping tools
 app.get('/', function (req, res) {
-  res.render('index');
+  res.redirect('/home');
+});
+
+app.get('/', function (req, res) {
+  res.redirect('index');
 });
 
 
