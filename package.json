@@ -2,6 +2,10 @@
   "name": "news-web-scrape",
   "version": "1.0.0",
   "description": "This full-stack application allows a client to scrape headlines, links, and (if available) excerpts from the Daily Universe website.  The client can then save the articles in a database, delete saved articles, make notes on specific articles, and delete those notes.",
+  "engines": {
+    "node": "13.7.0",
+    "npm": "6.13.7"
+  },
   "main": "server.js",
   "dependencies": {
     "axios": "^0.19.2",
