@@ -1,30 +1,30 @@
 {
-  "name": "y",
+  "name": "news-web-scrape",
   "version": "1.0.0",
-  "description": "A web app that lets users view and leave comments on the latest news. ",
+  "description": "This full-stack application allows a client to scrape headlines, links, and (if available) excerpts from the Daily Universe website.  The client can then save the articles in a database, delete saved articles, make notes on specific articles, and delete those notes.",
   "main": "server.js",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
+    "cheerio": "^1.0.0-rc.3",
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "mongoose": "^5.9.2",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/marjika/Mongoose-Scraper.git"
+    "url": "git+https://github.com/lamashree/News-Web-Scrape.git"
   },
-  "author": "Marjika Howarth",
+  "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/marjika/Mongoose-Scraper/issues"
+    "url": "https://github.com/lamashree/News-Web-Scrape/issues"
   },
-  "homepage": "https://github.com/marjika/Mongoose-Scraper#readme",
-  "dependencies": {
-    "axios": "^0.19.2",
-    "body-parser": "^1.18.3",
-    "cheerio": "^1.0.0-rc.2",
-    "express": "^4.16.3",
-    "express-handlebars": "^3.0.0",
-    "mongoose": "^5.9.2",
-    "morgan": "^1.9.1",
-    "request": "^2.88.0"
-  }
+  "homepage": "https://github.com/lamashree/News-Web-Scrape#readme"
 }
