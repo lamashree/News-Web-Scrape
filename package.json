@@ -1,34 +1,30 @@
 {
-  "name": "news-web-scrape",
+  "name": "y",
   "version": "1.0.0",
-  "description": "",
+  "description": "A web app that lets users view and leave comments on the latest news. ",
   "main": "server.js",
-  "engines": {
-    "node": "12.14.1"
-  },
-  "dependencies": {
-    "axios": "^0.19.2",
-    "cheerio": "^1.0.0-rc.3",
-    "express": "^4.17.1",
-    "express-handlebars": "^3.1.0",
-    "handlebars": "^4.7.2",
-    "mongoose": "^5.8.9",
-    "morgan": "^1.9.1",
-    "nodemon": "^2.0.2"
-  },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lamashree/News-Web-Scrape.git"
+    "url": "git+https://github.com/marjika/Mongoose-Scraper.git"
   },
-  "author": "",
+  "author": "Marjika Howarth",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/lamashree/News-Web-Scrape/issues"
+    "url": "https://github.com/marjika/Mongoose-Scraper/issues"
   },
-  "homepage": "https://github.com/lamashree/News-Web-Scrape#readme"
+  "homepage": "https://github.com/marjika/Mongoose-Scraper#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "body-parser": "^1.18.3",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
+    "mongoose": "^5.2.9",
+    "morgan": "^1.9.0",
+    "request": "^2.88.0"
+  }
 }

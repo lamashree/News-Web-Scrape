@@ -1,78 +1,87 @@
-$.getJSON("/articles", function (data) {
-  // For each one
-
-  for (var i = 0; i < data.length; i++) {
-    $('#articles').append("<div id='article'> <h3 data-id='" +
-      data[i]._id + "'>" + data[i].title + "</h3>" + "<h5 data-id='" +
-      data[i]._id + "'>" + data[i].link + "</h5>"
-      + "<input type = button id='save' value= save-articles>" +
-      "<input type = button value= View-article>" +
-      "</div>");
-    // Display the apropos information on the page
-
-  }
-
+//Scrape Articles for client to check
+$(document).on("click", "#scrape-button", function() {
+  $.ajax({
+    method: "GET",
+    url: "/scrape"
+  })
+  window.location.replace("/scrape");
 });
 
-// Whenever someone clicks a p tag
-$(document).on("click", "input", function () {
-  // Empty the notes from the note section
-  $("#notes").empty();
-  // Save the id from the p tag
-  var thisId = $(this).attr("data-id");
+//Delete an article
+$(document).on("click", ".delete-article", function() {
+    var thisId = $(this).attr("data-id");
+    $.ajax({
+      method: "DELETE",
+      url: "/saved/" + thisId
+    })
+    .then(function(data) {
+      // Log the response
+      console.log(data);
+      location.reload();
+    });
+});
 
-  // Now make an ajax call for the Article
+//Save an article
+$(document).on("click", ".save-article", function() {
+  var thisId = $(this).attr("data-id");
+  $(this).hide();
+  var data = {}
+  data.title =  $("#title-" + thisId).text();
+  data.link = $("#link-" + thisId).text();
+  data.excerpt = $("#excerpt-" + thisId).text();
+  $.ajax({
+    method: "POST",
+    dataType: "json",
+    url: "/api/saved",
+    data: data
+  })
+});
+
+//Go to the notes page for a particular article
+$(document).on("click", ".note-comment", function() {
+  var thisId = $(this).attr("data-id");
   $.ajax({
     method: "GET",
     url: "/articles/" + thisId
   })
-    // With that done, add the note information to the page
-    .then(function (data) {
-      console.log(data);
-      // The title of the article
-      $("#notes").append("<h2>" + data.title + "</h2>");
-      // An input to enter a new title
-      $("#notes").append("<input id='titleinput' name='title' >");
-      // A textarea to add a new note body
-      $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
-      // A button to submit a new note, with the id of the article saved to it
-      $("#notes").append("<button data-id='" + data._id + "' id='savenote'>Save Note</button>");
-
-      // If there's a note in the article
-      if (data.note) {
-        // Place the title of the note in the title input
-        $("#titleinput").val(data.note.title);
-        // Place the body of the note in the body textarea
-        $("#bodyinput").val(data.note.body);
-      }
-    });
+  window.location.replace("/articles/" + thisId);
 });
 
-// When you click the savenote button
-$(document).on("click", "#savenote", function () {
-  // Grab the id associated with the article from the submit button
-  var thisId = $(this).attr("data-id");
-
-  // Run a POST request to change the note, using what's entered in the inputs
-  $.ajax({
-    method: "POST",
-    url: "/articles/" + thisId,
-    data: {
-      // Value taken from title input
-      title: $("#titleinput").val(),
-      // Value taken from note textarea
-      body: $("#bodyinput").val()
-    }
-  })
-    // With that done
-    .then(function (data) {
+  // Submit a note
+  $(document).on("click", "#submit-note", function() {
+    // Grab the id associated with the article from the submit button
+    var thisId = $(this).attr("data-id");
+      // Run a POST request to save the note
+    $.ajax({
+      method: "POST",
+      url: "/articles/" + thisId,
+      data: {
+        // Value taken from title input
+        title: $("#title-note").val(),
+        // Value taken from note textarea
+        body: $("#note-description").val()
+      }
+    })
+      .then(function(data) {
+        // Log the response
+        console.log(data);
+        window.location.replace("/articles/" + data._id);
+      });  
+      // Also, remove the values entered in the input and textarea for note entry
+      $("#title-note").val("");
+      $("#note-description").val("");
+  });
+  
+  //delete a note
+  $(document).on("click", ".delete-note", function() {
+    var thisId = $(this).attr("data-id");
+    $.ajax({
+      method: "DELETE",
+      url: "/articles/" + thisId
+    })
+    .then(function(data) {
       // Log the response
       console.log(data);
-      // Empty the notes section
-      $("#notes").empty();
-    });
-
-  // Also, remove the values entered in the input and textarea for note entry
-  $("#titleinput").val("");
-  $("#bodyinput").val("");
+      location.reload();
+    }); 
 });
