@@ -182,5 +182,6 @@ app.post("/articles/:id", function(req, res) {
       res.json(err);
     })
 });
-
-port: process.env.PORT || 3000
+app.listen(PORT, function() {
+  console.log("App running on port " + PORT + "!");
+});
