@@ -11,7 +11,7 @@ var cheerio = require("cheerio");
 // Require all models
 var db = require("./models");
 
-var port = process.env.PORT|| 3000;
+var PORT =  process.env.PORT || 3000;
 
 // Initialize Express
 var app = express();
@@ -35,7 +35,7 @@ app.engine(
 app.set("view engine", "handlebars");
 
 // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/newScraper";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/newsScraper";
 
 // Set mongoose to leverage built in JavaScript ES6 Promises
 // Connect to the Mongo DB
@@ -184,7 +184,6 @@ app.post("/articles/:id", function(req, res) {
 });
 
 // Start the server
-var server = app.listen(process.env.PORT || 5000, function () {
-  var port = server.address().port;
-  console.log("Express is working on port " + port);
+app.listen(PORT, function() {
+  console.log("App running on port " + PORT + "!");
 });

@@ -24,7 +24,7 @@
                 <textarea class="form-control" id="note-description" rows="8" aria-describedby="note-description" placeholder="Your Comment"></textarea>
               </div>
               <br>
-              <button id="submit-note" data-id={{data._id}} >Submit</button>
+              <button id="submit-note" data-id={{data._id}} style="padding: 5px 10px; float:right">Submit</button>
             </form>
         </div>
       </div>
@@ -34,7 +34,7 @@
           {{#if data.note}}
             {{#each data.note}}
               <hr>
-              <button data-id={{this._id}} class="delete-note" >Delete</button>
+              <button data-id={{this._id}} class="delete-note" style="padding: 5px 10px; float:right">Delete</button>
               <h4><strong>{{this.title}}</strong></h4>
               <h5>{{this.body}}</h5>
               <hr>
